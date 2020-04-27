@@ -1,16 +1,24 @@
 import React from 'react';
 import Cell from './Cell';
 
-const Board = ({ width, handleClick, height, size, cells }) =>
-    <div className="Board"
+
+
+const Board = ({ width, handleClick, height, size, cells }) => {
+    let ref = null;
+    return (<div className="Board"
         style={{ width, height, backgroundSize: `${size}px ${size}px`}}
-        onClick={handleClick}
-        ref={(n) => { 
-            //this.boardRef = n;
+        onClick={(event) => {
+            event.stopPropagation();
+            event.persist();
+            console.log('inside the click');
+            handleClick(ref, event)
+        }}
+        ref={(n) => {
+           ref = n;
          }}>
         {cells.map(cell => (
-            <Cell x={cell.x} y={cell.y} key={`${cell.x},${cell.y}`}/>
+            <Cell x={cell.x} y={cell.y} key={`${cell.x},${cell.y}`} size={size}/>
         ))}
-    </div>;
-
+    </div>);
+}
 export default Board;
