@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Board from './Board';
+import Board from '../componets/Board';
 import sinon from 'sinon';
 
 describe('Cell', () => {
