@@ -2,9 +2,9 @@ import React, { useReducer } from 'react';
 import Board from './Board';
 import Controls from './Controls';
 
-import { initialState, reducer, getCells, ROWS, COLUMNS, WIDTH, HEIGHT, CELL_SIZE } from './reducer';
+import { initialState, reducer, getCells, ROWS, COLUMNS, WIDTH, HEIGHT, CELL_SIZE } from '../reducer';
 
-import './Game.css';
+import '../styles/Game.css';
 
 const Game = () => {
 
