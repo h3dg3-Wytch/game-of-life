@@ -31,3 +31,10 @@
     margin-left: 12px;
     cursor: pointer;
 }
+
+.container {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

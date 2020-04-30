@@ -36,7 +36,7 @@ const Game = () => {
 
 
     return (
-        <div>
+        <div className="container">
             <Board cells={cells} handleClick={handleClick}/>
             <Controls interval={interval} handleIntervalChange={handleIntervalChange} isRunning={isRunning} handleClear={handleClear}
              stopGame={stopGame} runGame={runGame}/>
