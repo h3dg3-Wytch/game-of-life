@@ -1,11 +1,7 @@
 import React from 'react';
 
-const Cell = ({x, y, size}) =>  
-    <div className="Cell" style={{
-        left: `${size * x + 1}px`,
-        top: `${size * y + 1}px`,
-        width: `${size - 1}px`,
-        height: `${size - 1}px`,
-    }} />;
+const Cell = ({n, m, active, handleClick}) => 
+   ( active ) ?  <div className="Cell" onClick={handleClick}></div> : <div className="ActiveCell" onClick={handleClick} />
 
+  
 export default Cell;

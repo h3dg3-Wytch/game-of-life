@@ -3,22 +3,18 @@ import Cell from './Cell';
 
 
 
-const Board = ({ width, handleClick, height, size, cells }) => {
-    let ref = null;
-    return (<div className="Board"
-        style={{ width, height, backgroundSize: `${size}px ${size}px`}}
-        onClick={(event) => {
-            event.stopPropagation();
-            event.persist();
-            console.log('inside the click');
-            handleClick(ref, event)
-        }}
-        ref={(n) => {
-           ref = n;
-         }}>
-        {cells.map(cell => (
-            <Cell x={cell.x} y={cell.y} key={`${cell.x},${cell.y}`} size={size}/>
-        ))}
-    </div>);
+const Board = ({ cells }) => {
+
+  
+}
+
+export function matrixToComponent(cells, handleClick) {
+    const result = [];
+    for(let i = 0; i < cells.length; i++ ){
+        for(let j = 0; j < cells[0].length; j++) {
+            result.push(<Cell n={i} m={j} onClick={handleClick} active={cells[i][j]}/>)
+        }
+    }
+    return result;
 }
 export default Board;

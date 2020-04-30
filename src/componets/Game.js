@@ -17,7 +17,9 @@ const Game = () => {
       dispatch({ type: 'init' });
     }
     
-    const gameClick = (event, ref) => dispatch(handleClick(event, ref));
+    console.log(cells);
+    console.log(board);
+    const gameClick = (ref, event) => dispatch(handleClick(ref, event));
     return (
         <div>
             <Board cells={cells} width={WIDTH} height={HEIGHT} size={CELL_SIZE} handleClick={gameClick} />
