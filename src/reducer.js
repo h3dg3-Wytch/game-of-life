@@ -1,11 +1,3 @@
-//defaults
-export const WIDTH = 800;
-export const HEIGHT = 600;
-export const CELL_SIZE = 20;
-export const ROWS = WIDTH / CELL_SIZE;
-export const COLUMNS = HEIGHT / CELL_SIZE;
-
-
 // const initBoard = getEmptyBoard(ROWS, COLUMNS);
 export const initialState = {
     cells: undefined,
@@ -27,7 +19,19 @@ export default function reducer(state, {type, payload}) {
       return {...state, cells: updatedCells};
     case 'run':
       const nextIteration = gameOfLife(state.cells);
-      return {...state, isRunning: !state.isRunning, cells: nextIteration};
+      return {...state, isRunning: true, cells: nextIteration};
+    case 'reset':
+      return initialState;
+    case 'clear':
+        return {...state, isRunning: false, cells: createZeroMatrix(4, 3)};
+    case 'stop':
+        return {...state, isRunning: false};
+    case 'start':
+        return {...state, isRunning: true};
+    case 'changeInterval':
+        const { interval } = payload;
+        console.log(interval);
+        return {...state, interval };
     default:
       return state;
   }
@@ -82,4 +86,3 @@ export function pureMatrixMerge(cells, n, m) {
     cells[n].splice(m, 1, true); 
     return cells;
 } 
-const combineArray = (array1, array2)  => [...array1, ...array2];

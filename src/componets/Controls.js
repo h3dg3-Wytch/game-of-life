@@ -2,7 +2,7 @@ import React from 'react';
 
 const Controls = ({ interval, handleIntervalChange, stopGame, runGame, handleRandom, handleClear, isRunning  }) => 
   <div className="controls">
-    Update every <input value={interval} onChange={handleIntervalChange} /> msec
+    Update every <input value={interval} onChange={(e) => handleIntervalChange(e.target.value)} /> msec
     {isRunning ?
         <button className="button" onClick={stopGame}>Stop</button> :
         <button className="button" onClick={runGame}>Run</button>

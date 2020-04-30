@@ -1,15 +1,26 @@
 .Board {
-    position: relative;
-    margin: 0 auto;
-    background-color: #000;
-    background-image:
-        linear-gradient(#333 1px, transparent 1px),
-        linear-gradient(90deg, #333 1px, transparent 1px);
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 200px;
+    height: 200px;
 }
 
 .Cell {
     background: #ccc;
-    position: absolute;
+    height: 50px;
+    width: 50px;
+    border: 1px solid black;
+    margin: 1px;
+}
+
+.ActiveCell {
+    background: red;
+    height: 50px;
+    width: 50px;
+    border: 1px solid black;
+    margin: 1px;
 }
 
 .controls {

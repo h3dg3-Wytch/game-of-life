@@ -1,29 +1,45 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import Board from './Board';
 import Controls from './Controls';
 
-import { initialState, reducer, getCells, ROWS, COLUMNS, WIDTH, HEIGHT, CELL_SIZE } from '../reducer';
+import reducer, { initialState, } from '../reducer';
 
-import { handleClick } from '../actions/actions';
+import { cellClick, intervalChange, clear, stop, run } from '../actions/actions';
 
 import '../styles/Game.css';
 
 const Game = () => {
 
     const [state, dispatch] = useReducer(reducer, initialState);
-    const { board, cells } = state;
+    const { cells, interval, isRunning } = state; 
 
-    if(board === undefined) {
+    const handleClick = (n,m) => dispatch(cellClick(n,m));
+    const handleIntervalChange = (interval) => dispatch(intervalChange(interval));
+    const stopGame = () => dispatch(stop());
+    const runGame = () => dispatch(run());
+    const handleClear = () => dispatch(clear());
+
+    if(cells === undefined) {
       dispatch({ type: 'init' });
     }
-    
-    console.log(cells);
-    console.log(board);
-    const gameClick = (ref, event) => dispatch(handleClick(ref, event));
+
+    useEffect(() => {
+        const runner = setInterval(() => {
+            if(isRunning) {
+                console.log('running game');
+                runGame();
+            }
+        }, interval);
+        return () => clearInterval(runner);
+      });
+
+
+
     return (
         <div>
-            <Board cells={cells} width={WIDTH} height={HEIGHT} size={CELL_SIZE} handleClick={gameClick} />
-            <Controls />
+            <Board cells={cells} handleClick={handleClick}/>
+            <Controls interval={interval} handleIntervalChange={handleIntervalChange} isRunning={isRunning} handleClear={handleClear}
+             stopGame={stopGame} runGame={runGame}/>
         </div>
     );
 
