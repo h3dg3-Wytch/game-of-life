@@ -2,7 +2,7 @@ import React, { useReducer, useEffect } from 'react';
 import Board from './Board';
 import Controls from './Controls';
 
-import reducer, { initialState, } from '../reducer';
+import reducer, { initialState, } from '../reducer/reducer';
 
 import { cellClick, intervalChange, clear, stop, run } from '../actions/actions';
 

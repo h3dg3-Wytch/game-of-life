@@ -1,4 +1,4 @@
-import reducer, { createZeroMatrix, gameOfLife, initialState, pureMatrixMerge } from '../reducer';
+import reducer, { createZeroMatrix, gameOfLife, initialState, pureMatrixMerge } from '../reducer/reducer';
 
 describe('reducer', () => {
     const emptyGrid = [
