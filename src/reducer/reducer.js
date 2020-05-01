@@ -30,7 +30,6 @@ export default function reducer(state, {type, payload}) {
         return {...state, isRunning: true};
     case 'changeInterval':
         const { interval } = payload;
-        console.log(interval);
         return {...state, interval };
     default:
       return state;

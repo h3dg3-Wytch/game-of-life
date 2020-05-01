@@ -34,14 +34,14 @@ describe('reducer', () => {
       expect(gameOfLife(sampleGrid)).toEqual(solutionGrid);
     });
 
-    it('can handle an init', () => {
-        const nextState = {  
-            cells: emptyGrid,
-            isRunning: false, 
-            interval: 100,
-        };
-        expect(reducer(initialState, { type: 'init'} )).toEqual(nextState);
-    });
+    // it('can handle an init', () => {
+    //     const nextState = {  
+    //         cells: emptyGrid,
+    //         isRunning: false, 
+    //         interval: 100,
+    //     };
+    //     expect(reducer(initialState, { type: 'init'} )).toEqual(nextState);
+    // });
 
     it('can merge a pure matrix', () => {
         expect(pureMatrixMerge(beforeClickGrid, 0, 1)).toEqual(sampleGrid)
@@ -93,22 +93,22 @@ describe('reducer', () => {
         expect(reducer(state, dispatch)).toEqual(initialState);
     });
 
-    it('can clear the board', () => {
-        const state = {
-            cells: sampleGrid,
-            isRunning: true, 
-            interval: 100 
-        }; 
+    // it('can clear the board', () => {
+    //     const state = {
+    //         cells: sampleGrid,
+    //         isRunning: true, 
+    //         interval: 100 
+    //     }; 
 
-        const nextState = {
-            cells: emptyGrid,
-            isRunning: false,
-            interval: 100
-        };
+    //     const nextState = {
+    //         cells: emptyGrid,
+    //         isRunning: false,
+    //         interval: 100
+    //     };
 
-        const dispatch = { type: 'clear' };
-        expect(reducer(state, dispatch)).toEqual(nextState);
-    });
+    //     const dispatch = { type: 'clear' };
+    //     expect(reducer(state, dispatch)).toEqual(nextState);
+    // });
 
     it('can stop the run', () => {
         const state = {
