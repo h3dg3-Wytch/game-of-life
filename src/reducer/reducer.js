@@ -11,7 +11,7 @@ export const initialState = {
 export default function reducer(state, {type, payload}) {
   switch (type) {
     case 'init':
-      const initedCells = createZeroMatrix(4, 3); 
+      const initedCells = createZeroMatrix(20, 20); 
       return {...state, cells: initedCells};
     case 'click':
       const {n, m} = payload;
@@ -23,7 +23,7 @@ export default function reducer(state, {type, payload}) {
     case 'reset':
       return initialState;
     case 'clear':
-        return {...state, isRunning: false, cells: createZeroMatrix(4, 3)};
+        return {...state, isRunning: false, cells: createZeroMatrix(20, 20)};
     case 'stop':
         return {...state, isRunning: false};
     case 'start':
@@ -46,13 +46,8 @@ export function gameOfLife(board) {
       for (let j = 0; j < m; j++) {
         let aliveCount = 0;
   
-        // Iterates through the neighbors and counts alive ones.
         for (let ni = (i-1); ni <= (i+1); ni++) {
           for (let nj = (j-1); nj <= (j+1); nj++) {
-            // Makes sure a couple things:
-            // 1. This is not the current cell.
-            // 2. The position is still within the board's dimensions.
-            // 3. The cell is alive.
             if ((ni != i || nj != j) &&
                 (ni >= 0 && ni < n && nj >= 0 && nj < m) &&
                 (board[ni][nj] === true)) {
@@ -61,7 +56,6 @@ export function gameOfLife(board) {
           }
         }
   
-        // Computes the next state based on aliveCount.
         nextBoard[i][j] = board[i][j]
           ? (aliveCount == 2 || aliveCount == 3)
           : (aliveCount == 3);
@@ -70,11 +64,6 @@ export function gameOfLife(board) {
     return nextBoard;
   }
   
-  /**
-   * @param {Number} n
-   * @param {Number} m
-   * @return {Array<Array<number>>} A zero matrix of size n * m.
-   */
   export function createZeroMatrix(n, m) {
     const matrix = [];
     for (let i = 0; i < n; i++) {
